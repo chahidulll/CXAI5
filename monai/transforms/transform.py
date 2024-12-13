@@ -137,7 +137,7 @@ def apply_transform(
     """
     try:
         if isinstance(data, (list, tuple)) and map_items:
-            return [_apply_transform(transform, item, unpack_items, lazy, overrides, log_stats) for item in data]
+            return [apply_transform(transform, item, map_items, unpack_items, log_stats, lazy, overrides) for item in data]
         return _apply_transform(transform, data, unpack_items, lazy, overrides, log_stats)
     except Exception as e:
         # if in debug mode, don't swallow exception so that the breakpoint
